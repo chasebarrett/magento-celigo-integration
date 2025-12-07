@@ -1,1 +1,13 @@
+flowchart LR
+    subgraph M[Magento]
+        M1[Customer Data]
+        M2[Sales Data]
+    end
+
+    M --> C[Celigo Integration Platform]
+    C --> N[NetSuite]
+
+    %% Data flow from Magento to Celigo
+    M1 --> C
+    M2 --> C
 
