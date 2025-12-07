@@ -1,3 +1,4 @@
+```mermaid
 flowchart LR
     subgraph M[Magento]
         M1[Customer Data]
@@ -10,4 +11,5 @@ flowchart LR
     %% Data flow from Magento to Celigo
     M1 --> C
     M2 --> C
+```
 
