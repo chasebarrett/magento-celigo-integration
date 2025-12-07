@@ -7,6 +7,6 @@ flowchart LR
     M --> C[Celigo Integration Platform]
     C --> N[NetSuite]
 
-    %% Optional: show that these data types flow through Celigo to NetSuite
+    %% Data flow from Magento to Celigo
     M1 --> C
     M2 --> C
