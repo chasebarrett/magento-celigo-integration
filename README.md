@@ -1,11 +1,19 @@
-# Magento–Celigo–NetSuite Customer Mapping Optimization 👋  
+# Magento–Celigo–NetSuite Customer Mapping Optimization
 **eCommerce Systems Case Study | Integration Design | Data Governance**
 
-I’m a systems thinker who enjoys untangling complex integrations, improving operational workflows, and designing data flows that scale with real-world business growth.
+This repository documents a production integration problem at **SCARPA North America**, where customer and order sync failures between **Magento, Celigo, and NetSuite** were creating significant operational overhead — and how a data-modeling–first solution reduced those errors by **90%+** without custom development.
 
-This repository documents a production integration problem I worked on at **SCARPA North America**, where customer and order sync failures between **Magento, Celigo, and NetSuite** were creating significant operational overhead — and how a data-modeling–first solution reduced those errors by **90%+** without custom development.
+---
 
-I focus on turning fragile integrations into clean, reliable systems — the kind teams can grow on.
+## Table of Contents
+- [The Problem](#-the-problem)
+- [My Approach](#-my-approach)
+- [Key Insight](#-key-insight)
+- [The Solution](#%EF%B8%8F-the-solution)
+- [Results](#-results)
+- [Why This Matters](#-why-this-matters)
+- [Solution Design](solution-design.md)
+- [SOP](sop.md)
 
 ---
 
@@ -92,8 +100,10 @@ We updated the Celigo customer mapping to:
 
 ### ✅ Resulting Format
 
+```
 Before: John Doe
 After:  John Doe 3456
+```
 
 This preserved:
 - Familiar customer naming conventions  
@@ -109,17 +119,12 @@ No custom NetSuite development was required.
 ```mermaid
 flowchart TD
   A["Customer places order"]
-  B["Magento
-Customer + Sales Order created"]
+  B["Magento<br/>Customer + Sales Order created"]
   C["Magento assigns unique Customer ID"]
-  D["Celigo mapping appends ID
-Name = First Last + CustomerID"]
-  E["NetSuite
-Create customer (unique)"]
-  F["NetSuite
-Create Sales Order under customer"]
-  G["Sync succeeds
-No manual CS work"]
+  D["Celigo mapping appends ID<br/>Name = First Last + CustomerID"]
+  E["NetSuite<br/>Create customer (unique)"]
+  F["NetSuite<br/>Create Sales Order under customer"]
+  G["Sync succeeds<br/>No manual CS work"]
 
   A --> B --> C --> D --> E --> F --> G
 ```
@@ -127,12 +132,9 @@ No manual CS work"]
 
 ```mermaid
 flowchart LR
-  M["Magento
-eCommerce Frontend"]
-  C["Celigo
-integrator.io"]
-  N["NetSuite
-ERP / Source of Truth"]
+  M["Magento<br/>eCommerce Frontend"]
+  C["Celigo<br/>integrator.io"]
+  N["NetSuite<br/>ERP / Source of Truth"]
 
   M <-->|Customers + Orders| C
   C <-->|Create/Update Customers + Sales Orders| N
@@ -141,11 +143,11 @@ ERP / Source of Truth"]
 ```
 
 ## 🧩 Root Cause → Fix Summary
+
 ```mermaid
 flowchart TD
   A["NetSuite requires unique Customer Name"]
-  B["Common names collide
-(John Doe)"]
+  B["Common names collide<br/>(John Doe)"]
   C["Celigo customer create fails"]
   D["Order fails to import"]
   E["Manual CS intervention required"]
@@ -194,17 +196,6 @@ This case study highlights that:
 
 ## 📁 Repository Structure
 
-
----
-
-## 🚧 Status
-
-This repository is part of an ongoing effort to document **real-world eCommerce integration and systems work**.
-
-More diagrams, SOPs, and artifacts will be added incrementally.
-
----
-
-> **Thanks for visiting — this repo represents how I think about systems, not just tools.**
-
+- [`solution-design.md`](solution-design.md) — Constraints, data sources evaluated, and rationale for the customer ID approach
+- [`sop.md`](sop.md) — Standard operating procedure for ongoing customer sync error handling
 
