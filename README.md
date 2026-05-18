@@ -74,6 +74,7 @@ Before applying a workaround, I focused on deeply understanding:
 NetSuite offers a native solution — auto-generated random Customer IDs — but adopting it would have required Sales and Customer Service teams to change how they search for and reference records. The technical fix would have created an operational problem.
 
 Rather than forcing a system-native solution that degraded usability, I looked for a way to introduce **deterministic uniqueness** while preserving human readability. (See [Alternatives Considered](solution-design.md#alternatives-considered) for the full evaluation.)
+
 ---
 
 ## 🔑 Key Insight
